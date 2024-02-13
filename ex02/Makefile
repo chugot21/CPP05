@@ -1,7 +1,11 @@
-NAME =	Bureaucrat
+NAME =	Forms
 
 SRCS =	main.cpp \
 		Bureaucrat.cpp \
+		AForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
 
 CC = c++
 

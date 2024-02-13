@@ -6,7 +6,7 @@
 /*   By: clara <clara@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:42 by clara             #+#    #+#             */
-/*   Updated: 2024/02/13 12:44:39 by clara            ###   ########.fr       */
+/*   Updated: 2024/02/13 15:23:59 by clara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 int main()
 {
-    try
-    {
-        Bureaucrat  bob("Bob", 1);
-        std::cout << bob;
-        bob.setGradeup(); //Grade will be 0.
-    }
-	catch(Bureaucrat::GradeTooHighException& e)
+	try
 	{
-		std::cerr << e.what() << std ::endl;
+		Bureaucrat  bob("Bob", 1);
+		Bureaucrat	marc("Marc", 40);
+		//Bureaucrat	axel("Axel", 160);
+		Form		form("contrat", 10, 20);
+    	std::cout << bob;
+		std::cout << marc;
+		std::cout << form;
+		marc.signForm(form);
+		bob.signForm(form);
 	}
-	catch(Bureaucrat::GradeTooLowException& e)
+	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std ::endl;
+		std::cerr << e.what() << '\n';
 	}
+    
     return 0;
 }
