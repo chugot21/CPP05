@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clara <clara@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 14:13:39 by clara             #+#    #+#             */
-/*   Updated: 2024/02/13 21:23:02 by clara            ###   ########.fr       */
+/*   Updated: 2024/02/13 19:34:19 by clara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		
@@ -27,17 +27,18 @@ class Form
 
 	public:
 
-		Form(std::string formname, int gradetosign, int gradetoexec);
-		Form(Form const& src);
-		~Form();
+		AForm(std::string formname, int gradetosign, int gradetoexec);
+		AForm(AForm const& src);
+		virtual ~AForm();
 
-		Form&	operator=(Form const& src);
+		AForm&	operator=(AForm const& src);
 
 		std::string	getFormName() const;
 		bool		getSign() const;
 		int			getGradeToSign() const;
 		int			getGradeToExec() const;
 		void		beSigned(Bureaucrat const& bureaucrat);
+		virtual void		execute(Bureaucrat const& executor) const;
 
 	class	GradeTooHighException : public std::exception
 	{
@@ -51,8 +52,14 @@ class Form
 			virtual const char* what() const throw();
 	};
 
+	class	FormIsntSigned : public std::exception
+	{
+		public:
+			virtual const char * what() const throw();
+	};
+
 };
 
-std::ostream&	operator<<(std::ostream& o, Form const& i);
+std::ostream&	operator<<(std::ostream& o, AForm const& i);
 
 #endif

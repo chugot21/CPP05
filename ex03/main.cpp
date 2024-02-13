@@ -6,7 +6,7 @@
 /*   By: clara <clara@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:03:42 by clara             #+#    #+#             */
-/*   Updated: 2024/02/13 21:17:54 by clara            ###   ########.fr       */
+/*   Updated: 2024/02/13 21:43:59 by clara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
+
+	Intern someRandomIntern;
+
+	AForm* rrf;
+
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
 	Bureaucrat  bob("Bob", 1);
 	Bureaucrat	marc("Marc", 140);
 	AForm		*form1 = new ShrubberyCreationForm("home");
