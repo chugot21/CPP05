@@ -6,7 +6,7 @@
 /*   By: clara <clara@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 21:26:19 by clara             #+#    #+#             */
-/*   Updated: 2024/02/13 22:09:18 by clara            ###   ########.fr       */
+/*   Updated: 2024/02/14 19:02:01 by clara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,34 @@ Intern&	Intern::operator=(Intern const& src)
 	return *this;
 }
 
-AForm&	makeForm(std::string formname, std::string target)
+AForm*	makeShrubbery(std::string target)
 {
-	std::string	str[4] = {};
-
-
-	if ()
-		throw Intern::NameError();
-	try
-	{
-		AForm   formname = new formname(target);
-		std::cout << "Intern creates " << formname;
-	}
-	catch(const Intern::NameError& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
-	return *formname;
+	return new ShrubberyCreationForm(target);
 }
 
-const char* Intern::NameError::what() const throw()
+AForm*	makeRobotomy(std::string target)
 {
-	return "Wrong"
+	return new RobotomyRequestForm(target);
+}
+
+AForm*	makePresidential(std::string target)
+{
+	return new PresidentialPardonForm(target);
+}
+
+AForm*	Intern::makeForm(std::string formname, std::string target)
+{
+	AForm*	(*tabmakeForm[])(std::string target) = {&makeShrubbery, &makeRobotomy, &makePresidential};
+	std::string	str[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+
+	for(int i = 0; i < 3; i++)
+	{
+		if (str[i] == formname)
+		{
+			std::cout << "Intern creates " << formname << std::endl;
+			return (*tabmakeForm[i])(target);
+		}
+	}
+	std::cerr << "The name " << formname << " doesn't exist" << std::endl;
+	return NULL;
 }
