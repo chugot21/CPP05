@@ -20,9 +20,9 @@ int main()
 {
 	Bureaucrat  bob("Bob", 1);
 	Bureaucrat	marc("Marc", 140);
-	AForm		*form1 = new ShrubberyCreationForm("home");
-	AForm		*form2 = new RobotomyRequestForm("home1");
-	AForm		*form3 = new PresidentialPardonForm("home3");
+	AForm		*form1 = new ShrubberyCreationForm("rob1");
+	AForm		*form2 = new RobotomyRequestForm("rob2");
+	AForm		*form3 = new PresidentialPardonForm("rob3");
 
     std::cout << bob;
 	std::cout << marc;

@@ -16,6 +16,7 @@ int main()
 {
     try
     {
+		//Bureaucrat	marc("Marc", 0);
         Bureaucrat  bob("Bob", 1);
         std::cout << bob;
         bob.setGradeup(); //Grade will be 0.
